@@ -1,4 +1,4 @@
-package com.comicbooks.models;
+package com.comicbooks.library.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
