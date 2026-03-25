@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Comic Book</title>
+</head>
+<body>
+<h1>Edit Comic Book</h1>
+<form th:action="@{/comicbooks/edit/{id}(id=${comicBook.id})}" method="post">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" th:value="${comicBook.title}" required><br><br>
+
+    <label for="publisher">Publisher:</label>
+    <input type="text" id="publisher" name="publisher" th:value="${comicBook.publisher}" required><br><br>
+
+    <label for="issueNumber">Issue Number:</label>
+    <input type="number" id="issueNumber" name="issueNumber" th:value="${comicBook.issueNumber}" required><br><br>
+
+    <label for="releaseYear">Release Year:</label>
+    <input type="date" id="releaseYear" name="releaseYear" th:value="${comicBook.releaseYear}" required><br><br>
+
+    <label for="author">Author:</label>
+    <input type="text" id="author" name="author" th:value="${comicBook.author}" required><br><br>
+
+    <label for="genre">Genre:</label>
+    <input type="text" id="genre" name="genre" th:value="${comicBook.genre}" required><br><br>
+
+    <button type="submit">Update Comic Book</button>
+</form>
+
+<br>
+<a th:href="@{/comicbooks}">Back to Comic Book List</a>
+
+</body>
+</html>

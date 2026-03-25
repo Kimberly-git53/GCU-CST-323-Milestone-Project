@@ -1,0 +1,36 @@
+<!DOCTYPE html> 
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Comic Book</title>    
+</head>
+<body>
+    <h1>Add New Comic Book</h1>
+
+    <form th:action="@{/comicbooks/create}" method="post">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required><br><br>
+
+        <label for="publisher">Publisher:</label>
+        <input type="text" id="publisher" name="publisher" required><br><br>
+
+        <label for="IssueNumber">Issue Number:</label>
+        <input type="number" id="issueNumber" name="issueNumber" required><br><br>
+
+        <label for="releaseYear">Release Year:</label>
+        <input type="date" id="releaseYear" name="releaseYear" required><br><br>
+
+        <label for="author">Author:</label>
+        <input type="text" id="author" name="author" required><br><br>  
+
+        <label for="genre">Genre:</label>
+        <input type="text" id="genre" name="genre" required><br><br>
+
+        <button type="submit">Add Comic Book</button>
+    </form>
+
+    <br>
+    <a th:href="@{/comicbooks}">Back to Comic Book List</a>
+
+</body>
+
+</html>
