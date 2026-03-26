@@ -13,7 +13,7 @@ import com.comicbooks.library.models.ComicBook;
 // Import the repository from the NEW correct package
 import com.comicbooks.library.repositories.ComicBookRepository;
 
-// Mark this class as a Service so Spring can manage it
+// 
 @Service
 public class ComicBookService {
 

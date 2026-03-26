@@ -1,33 +1,74 @@
+<!-- Declare this as an HTML5 document -->
 <!DOCTYPE html>
+
+<!-- Enable Thymeleaf template engine -->
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
+    <!-- Title shown in browser tab -->
     <title>Edit Comic Book</title>
 </head>
+
 <body>
+
+<!-- Page heading -->
 <h1>Edit Comic Book</h1>
+
+<!-- Form that submits updated data -->
+<!-- th:action dynamically inserts the comic ID into the URL -->
 <form th:action="@{/comicbooks/edit/{id}(id=${comicBook.id})}" method="post">
+
+    <!-- Title label -->
     <label for="title">Title:</label>
-    <input type="text" id="title" name="title" th:value="${comicBook.title}" required><br><br>
 
+    <!-- Text input pre-filled with current title -->
+    <input type="text" id="title" name="title" th:value="${comicBook.title}" required>
+    <br><br>
+
+    <!-- Publisher label -->
     <label for="publisher">Publisher:</label>
-    <input type="text" id="publisher" name="publisher" th:value="${comicBook.publisher}" required><br><br>
 
+    <!-- Text input pre-filled with current publisher -->
+    <input type="text" id="publisher" name="publisher" th:value="${comicBook.publisher}" required>
+    <br><br>
+
+    <!-- Issue Number label -->
     <label for="issueNumber">Issue Number:</label>
-    <input type="number" id="issueNumber" name="issueNumber" th:value="${comicBook.issueNumber}" required><br><br>
 
+    <!-- Number input pre-filled with issue number -->
+    <input type="number" id="issueNumber" name="issueNumber" th:value="${comicBook.issueNumber}" required>
+    <br><br>
+
+    <!-- Release Year label -->
     <label for="releaseYear">Release Year:</label>
-    <input type="date" id="releaseYear" name="releaseYear" th:value="${comicBook.releaseYear}" required><br><br>
 
+    <!-- FIX: changed from type="date" to type="number" -->
+    <!-- This allows values like 2024 instead of a full date -->
+    <input type="number" id="releaseYear" name="releaseYear" th:value="${comicBook.releaseYear}" required>
+    <br><br>
+
+    <!-- Author label -->
     <label for="author">Author:</label>
-    <input type="text" id="author" name="author" th:value="${comicBook.author}" required><br><br>
 
+    <!-- Text input pre-filled with author -->
+    <input type="text" id="author" name="author" th:value="${comicBook.author}" required>
+    <br><br>
+
+    <!-- Genre label -->
     <label for="genre">Genre:</label>
-    <input type="text" id="genre" name="genre" th:value="${comicBook.genre}" required><br><br>
 
+    <!-- Text input pre-filled with genre -->
+    <input type="text" id="genre" name="genre" th:value="${comicBook.genre}" required>
+    <br><br>
+
+    <!-- Submit button -->
     <button type="submit">Update Comic Book</button>
+
 </form>
 
 <br>
+
+<!-- Link back to list page -->
 <a th:href="@{/comicbooks}">Back to Comic Book List</a>
 
 </body>

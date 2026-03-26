@@ -1,34 +1,74 @@
+<!-- Declare this as an HTML5 document -->
 <!DOCTYPE html> 
+
+<!-- Enable Thymeleaf template engine -->
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
+    <!-- Title displayed in the browser tab -->
     <title>Add Comic Book</title>    
 </head>
+
 <body>
+
+    <!-- Main heading on the page -->
     <h1>Add New Comic Book</h1>
 
+    <!-- Form that sends data to the controller -->
+    <!-- th:action tells Spring where to send the form -->
+    <!-- method="post" means we are submitting data -->
     <form th:action="@{/comicbooks/create}" method="post">
+
+        <!-- Label for title input -->
         <label for="title">Title:</label>
-        <input type="text" id="title" name="title" required><br><br>
 
+        <!-- Text input for comic title -->
+        <input type="text" id="title" name="title" required>
+        <br><br>
+
+        <!-- Label for publisher -->
         <label for="publisher">Publisher:</label>
-        <input type="text" id="publisher" name="publisher" required><br><br>
 
-        <label for="IssueNumber">Issue Number:</label>
-        <input type="number" id="issueNumber" name="issueNumber" required><br><br>
+        <!-- Text input for publisher -->
+        <input type="text" id="publisher" name="publisher" required>
+        <br><br>
 
+        <!-- Label for issue number -->
+        <label for="issueNumber">Issue Number:</label>
+
+        <!-- Number input for issue number -->
+        <input type="number" id="issueNumber" name="issueNumber" required>
+        <br><br>
+
+        <!-- Label for release year -->
         <label for="releaseYear">Release Year:</label>
-        <input type="date" id="releaseYear" name="releaseYear" required><br><br>
 
+        <!-- FIX: changed from type="date" to type="number" -->
+        <!-- This ensures only a year (like 2024) is entered -->
+        <input type="number" id="releaseYear" name="releaseYear" required>
+        <br><br>
+
+        <!-- Label for author -->
         <label for="author">Author:</label>
-        <input type="text" id="author" name="author" required><br><br>  
 
+        <!-- Text input for author -->
+        <input type="text" id="author" name="author" required>
+        <br><br>  
+
+        <!-- Label for genre -->
         <label for="genre">Genre:</label>
-        <input type="text" id="genre" name="genre" required><br><br>
 
+        <!-- Text input for genre -->
+        <input type="text" id="genre" name="genre" required>
+        <br><br>
+
+        <!-- Submit button to send form data -->
         <button type="submit">Add Comic Book</button>
     </form>
 
     <br>
+
+    <!-- Link to go back to comic book list -->
     <a th:href="@{/comicbooks}">Back to Comic Book List</a>
 
 </body>

@@ -9,23 +9,52 @@
 
 <a href="/comicbooks/create">Add New Comic</a>
 
+<!-- Table to display comic books -->
 <table border="1">
+
+    <!-- Table header row -->
     <tr>
         <th>ID</th>
         <th>Title</th>
         <th>Publisher</th>
+        <th>Issue Number</th>
+        <th>Release Year</th>
+        <th>Author</th>
+        <th>Genre</th>
         <th>Actions</th>
     </tr>
 
+    <!-- Loop through each comic book in the list -->
     <tr th:each="comic : ${comicBooks}">
+
+        <!-- Display ID -->
         <td th:text="${comic.id}"></td>
+
+        <!-- Display Title -->
         <td th:text="${comic.title}"></td>
+
+        <!-- Display Publisher -->
         <td th:text="${comic.publisher}"></td>
+
+        <!-- Display Issue Number -->
+        <td th:text="${comic.issueNumber}"></td>
+
+        <!-- Display Release Year -->
+        <td th:text="${comic.releaseYear}"></td>
+
+        <!-- Display Author -->
+        <td th:text="${comic.author}"></td>
+
+        <!-- Display Genre -->
+        <td th:text="${comic.genre}"></td>
+
+        <!-- Action links -->
         <td>
             <a th:href="@{/comicbooks/edit/{id}(id=${comic.id})}">Edit</a>
             <a th:href="@{/comicbooks/delete/{id}(id=${comic.id})}">Delete</a>
         </td>
     </tr>
+
 </table>
 
 </body>
