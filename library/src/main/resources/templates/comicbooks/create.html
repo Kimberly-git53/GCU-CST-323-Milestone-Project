@@ -1,76 +1,127 @@
-<!-- Declare this as an HTML5 document -->
-<!DOCTYPE html> 
-
-<!-- Enable Thymeleaf template engine -->
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <!-- Title displayed in the browser tab -->
-    <title>Add Comic Book</title>    
+
+    <title>Add Comic Book</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+
+    <!-- Custom Styling -->
+    <style>
+
+        body {
+            background: linear-gradient(to right, #1c1c1c, #3a3a3a);
+            color: white;
+        }
+
+        h1 {
+            font-family: 'Bangers', cursive;
+            letter-spacing: 2px;
+            font-size: 3rem;
+            text-shadow: 2px 2px 5px black;
+        }
+
+        .card {
+            background-color: white;
+            color: black;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+        }
+
+        .navbar-brand {
+            font-family: 'Bangers', cursive;
+            font-size: 1.8rem;
+        }
+
+    </style>
+
 </head>
 
 <body>
 
-    <!-- Main heading on the page -->
-    <h1>Add New Comic Book</h1>
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-    <!-- Form that sends data to the controller -->
-    <!-- th:action tells Spring where to send the form -->
-    <!-- method="post" means we are submitting data -->
-    <form th:action="@{/comicbooks/create}" method="post">
+    <a class="navbar-brand" href="/comicbooks">Comic Library</a>
 
-        <!-- Label for title input -->
-        <label for="title">Title:</label>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
 
-        <!-- Text input for comic title -->
-        <input type="text" id="title" name="title" required>
-        <br><br>
+            <li class="nav-item">
+                <a class="nav-link" href="/comicbooks">Home</a>
+            </li>
 
-        <!-- Label for publisher -->
-        <label for="publisher">Publisher:</label>
+            <li class="nav-item">
+                <a class="nav-link" href="/comicbooks/create">Add Comic</a>
+            </li>
 
-        <!-- Text input for publisher -->
-        <input type="text" id="publisher" name="publisher" required>
-        <br><br>
+        </ul>
+    </div>
 
-        <!-- Label for issue number -->
-        <label for="issueNumber">Issue Number:</label>
+</nav>
 
-        <!-- Number input for issue number -->
-        <input type="number" id="issueNumber" name="issueNumber" required>
-        <br><br>
+<!-- CONTENT -->
+<div class="container mt-4">
 
-        <!-- Label for release year -->
-        <label for="releaseYear">Release Year:</label>
+    <h1 class="text-center mb-4">Add New Comic Book</h1>
 
-        <!-- FIX: changed from type="date" to type="number" -->
-        <!-- This ensures only a year (like 2024) is entered -->
-        <input type="number" id="releaseYear" name="releaseYear" required>
-        <br><br>
+    <div class="card p-4">
 
-        <!-- Label for author -->
-        <label for="author">Author:</label>
+        <form th:action="@{/comicbooks/create}" method="post">
 
-        <!-- Text input for author -->
-        <input type="text" id="author" name="author" required>
-        <br><br>  
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" class="form-control" required>
+            </div>
 
-        <!-- Label for genre -->
-        <label for="genre">Genre:</label>
+            <div class="form-group">
+                <label for="publisher">Publisher:</label>
+                <input type="text" id="publisher" name="publisher" class="form-control" required>
+            </div>
 
-        <!-- Text input for genre -->
-        <input type="text" id="genre" name="genre" required>
-        <br><br>
+            <div class="form-group">
+                <label for="issueNumber">Issue Number:</label>
+                <input type="number" id="issueNumber" name="issueNumber" class="form-control" required>
+            </div>
 
-        <!-- Submit button to send form data -->
-        <button type="submit">Add Comic Book</button>
-    </form>
+            <div class="form-group">
+                <label for="releaseYear">Release Year:</label>
+                <input type="number" id="releaseYear" name="releaseYear" class="form-control" required>
+            </div>
 
-    <br>
+            <div class="form-group">
+                <label for="author">Author:</label>
+                <input type="text" id="author" name="author" class="form-control" required>
+            </div>
 
-    <!-- Link to go back to comic book list -->
-    <a th:href="@{/comicbooks}">Back to Comic Book List</a>
+            <div class="form-group">
+                <label for="genre">Genre:</label>
+                <input type="text" id="genre" name="genre" class="form-control" required>
+            </div>
+
+            <div class="text-center">
+
+                <button type="submit" class="btn btn-primary">
+                    Add Comic Book
+                </button>
+
+                <a th:href="@{/comicbooks}" class="btn btn-secondary ml-2">
+                    Cancel
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
 
 </body>
-
 </html>

@@ -1,61 +1,143 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
+
     <title>Comic Book List</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+
+    <!-- Custom Styling -->
+    <style>
+
+        body {
+            background: linear-gradient(to right, #1c1c1c, #3a3a3a);
+            color: white;
+        }
+
+        h1 {
+            font-family: 'Bangers', cursive;
+            letter-spacing: 2px;
+            font-size: 3rem;
+            text-shadow: 2px 2px 5px black;
+        }
+
+        .table-container {
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        table {
+            background-color: white;
+            color: black;
+        }
+
+        /* Navbar styling */
+        .navbar-brand {
+            font-family: 'Bangers', cursive;
+            font-size: 1.8rem;
+        }
+
+    </style>
+
 </head>
+
 <body>
 
-<h1>Comic Book Library</h1>
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-<a href="/comicbooks/create">Add New Comic</a>
+    <!-- App name -->
+    <a class="navbar-brand" href="/comicbooks">Comic Library</a>
 
-<!-- Table to display comic books -->
-<table border="1">
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse">
 
-    <!-- Table header row -->
-    <tr>
-        <th>ID</th>
-        <th>Title</th>
-        <th>Publisher</th>
-        <th>Issue Number</th>
-        <th>Release Year</th>
-        <th>Author</th>
-        <th>Genre</th>
-        <th>Actions</th>
-    </tr>
+        <ul class="navbar-nav ml-auto">
 
-    <!-- Loop through each comic book in the list -->
-    <tr th:each="comic : ${comicBooks}">
+            <!-- Home -->
+            <li class="nav-item">
+                <a class="nav-link" href="/comicbooks">Home</a>
+            </li>
 
-        <!-- Display ID -->
-        <td th:text="${comic.id}"></td>
+            <!-- Add Comic -->
+            <li class="nav-item">
+                <a class="nav-link" href="/comicbooks/create">Add Comic</a>
+            </li>
 
-        <!-- Display Title -->
-        <td th:text="${comic.title}"></td>
+        </ul>
 
-        <!-- Display Publisher -->
-        <td th:text="${comic.publisher}"></td>
+    </div>
 
-        <!-- Display Issue Number -->
-        <td th:text="${comic.issueNumber}"></td>
+</nav>
 
-        <!-- Display Release Year -->
-        <td th:text="${comic.releaseYear}"></td>
+<!-- MAIN CONTENT -->
+<div class="container mt-4">
 
-        <!-- Display Author -->
-        <td th:text="${comic.author}"></td>
+    <h1 class="text-center mb-4">Comic Book Library</h1>
 
-        <!-- Display Genre -->
-        <td th:text="${comic.genre}"></td>
+    <a href="/comicbooks/create" class="btn btn-primary mb-3">
+        Add New Comic
+    </a>
 
-        <!-- Action links -->
-        <td>
-            <a th:href="@{/comicbooks/edit/{id}(id=${comic.id})}">Edit</a>
-            <a th:href="@{/comicbooks/delete/{id}(id=${comic.id})}">Delete</a>
-        </td>
-    </tr>
+    <div class="table-container">
 
-</table>
+        <table class="table table-striped table-bordered">
+
+            <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Publisher</th>
+                <th>Issue Number</th>
+                <th>Release Year</th>
+                <th>Author</th>
+                <th>Genre</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            <tr th:each="comic : ${comicBooks}">
+
+                <td th:text="${comic.id}"></td>
+                <td th:text="${comic.title}"></td>
+                <td th:text="${comic.publisher}"></td>
+                <td th:text="${comic.issueNumber}"></td>
+                <td th:text="${comic.releaseYear}"></td>
+                <td th:text="${comic.author}"></td>
+                <td th:text="${comic.genre}"></td>
+
+                <td>
+
+                    <a th:href="@{/comicbooks/edit/{id}(id=${comic.id})}"
+                       class="btn btn-warning btn-sm">
+                        Edit
+                    </a>
+
+                    <a th:href="@{/comicbooks/delete/{id}(id=${comic.id})}"
+                       class="btn btn-danger btn-sm">
+                        Delete
+                    </a>
+
+                </td>
+
+            </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
 
 </body>
 </html>
